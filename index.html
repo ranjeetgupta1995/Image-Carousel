@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image-Carousel</title>
+    <link rel="stylesheet" href="styles.css" >
+</head>
+<body>
+    <div id="box">
+        <div class="btn">
+            <button id="prev"><</button>
+        </div>
+        <div class="image">
+            <img src="" alt="" />
+            <div class="position">
+                <div id="circle1" class="round"></div>
+                <div id="circle2" class="round"></div>
+                <div id="circle3" class="round"></div>
+            </div>
+        </div>
+        <div class="btn">
+            <button id="next">></button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    let imageEl = document.querySelector('img');
+    let prev = document.getElementById('prev');
+    let next = document.getElementById('next');
+
+    let circle1 = document.getElementById('circle1');
+    let circle2 = document.getElementById('circle2');
+    let circle3 = document.getElementById('circle3');
+
+     let imageArr = ["https://i.pinimg.com/736x/20/5c/dd/205cdd4c41b489cd31251d646db81efa.jpg", "https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4=", "https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&w=600"];
+
+     let imageIndex = 0;
+     circle1.style.backgroundColor = 'white';
+
+     imageEl.setAttribute('src', imageArr[imageIndex]);
+
+     prev.addEventListener("click", () => {
+        imageIndex--;
+        if(imageIndex === -1){
+            imageIndex = imageArr.length-1;
+        }
+        imageEl.setAttribute('src', imageArr[imageIndex]);
+
+        if(imageIndex === 0){
+            circle1.style.backgroundColor = 'white';
+            circle2.style.backgroundColor = '';
+            circle3.style.backgroundColor = '';
+        }
+        else if(imageIndex === imageArr.length-1){
+            circle1.style.backgroundColor = '';
+            circle2.style.backgroundColor = '';
+            circle3.style.backgroundColor = 'white';
+        }
+        else{
+            circle1.style.backgroundColor = '';
+            circle2.style.backgroundColor = 'white';
+            circle3.style.backgroundColor = '';
+        }
+     })
+
+     next.addEventListener("click", () => {
+        imageIndex++;
+        if(imageIndex === imageArr.length){
+            imageIndex = 0;
+        }
+        imageEl.setAttribute('src', imageArr[imageIndex])
+
+        if(imageIndex === 0){
+            circle1.style.backgroundColor = 'white';
+            circle2.style.backgroundColor = '';
+            circle3.style.backgroundColor = '';
+        }
+        else if(imageIndex === imageArr.length-1){
+            circle1.style.backgroundColor = '';
+            circle2.style.backgroundColor = '';
+            circle3.style.backgroundColor = 'white';
+        }
+        else{
+            circle1.style.backgroundColor = '';
+            circle2.style.backgroundColor = 'white';
+            circle3.style.backgroundColor = '';
+        }
+     })
+
+</script>
+</html>
